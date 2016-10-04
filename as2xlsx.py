@@ -56,7 +56,7 @@ def find_matches(path, file_extensions, sequence):
             for match in sequence.finditer(data):
                 if is_ascii(match.group()):
                     continue
-                key = folder.replace(path + "\\", "") + "\\" + filename + "#" + str(match.start()).zfill(12)
+                key = os.path.join(folder.replace(path, "")[1:], filename) + "#" + str(match.start()).zfill(12)
                 value = match.group()[1:-1]
                 match_dict[key] = {'zh': value}
     return match_dict
