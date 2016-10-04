@@ -183,7 +183,16 @@ if __name__ == '__main__':
                     new_data = current_data[:start_pos + 1] + dict_xlsx_target[string_id][target_lang] \
                                + current_data[end_pos + 1:]
                     new_data = new_data.encode('utf-8')
-                    mapped_file.resize(len(new_data))
+                    try:
+                       mapped_file.resize(len(new_data))
+                    except Exception, e:
+                        print "File:", os.path.join(content_folder, string_id.split("#")[0])
+                        print "Swapping:"
+                        print dict_xlsx_source[string_id]['zh'].encode('utf8')
+                        print dict_xlsx_target[string_id][target_lang].encode('utf8')
+                        print "New data:"
+                        print new_data
+                        sys.exit(e)
 
                     # overwrite with new_data
                     mapped_file.seek(0)
