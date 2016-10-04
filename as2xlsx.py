@@ -155,8 +155,8 @@ if __name__ == '__main__':
 
         # integrity check
         dict_xlsx_source = single_lang_from_dict(dict_xlsx, 'zh')
-        if dict_xlsx_source != dict_as:
-            sys.exit("String IDs in the XLSX file do not match the .as files!")
+        # if dict_xlsx_source != dict_as:
+        #     sys.exit("String IDs in the XLSX file do not match the .as files!")
 
         dict_xlsx_target = single_lang_from_dict(dict_xlsx, target_lang)
         sorted_keys = sorted([key for key in dict_xlsx_target.keys()])
